@@ -3,7 +3,11 @@
 
 void printCudaVersion()
 {
+#ifdef OLD_CUDA
     std::cout << "CUDA Compiled version: " << __CUDACC_VER__ << std::endl;
+#else
+    std::cout << "CUDA Compiled version: " << __CUDACC_VER_MAJOR__ * 10000 + __CUDACC_VER_MAJOR__ * 100 + __CUDACC_VER_BUILD__ << std::endl;
+#endif
 
     int runtime_ver;
     cudaRuntimeGetVersion(&runtime_ver);
